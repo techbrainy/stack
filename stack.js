@@ -4,6 +4,7 @@ class stack_functions {
 
     constructor() {
         this.stackJS = [];
+        this.index = -1;
         this.upperLimit = 10;
 
 
@@ -12,10 +13,18 @@ class stack_functions {
     push(data) {
 
 
-        if (this.stackJS.length < this.upperLimit) {
+        if (this.index < this.upperLimit) {
+            this.index++;
+
             this.stackJS[this.stackJS.length] = data;
+
+
+
+
+
+
         } else {
-            console.log("Cannot add more as stack limit is full")
+            console.log(`Cannot add "${data}" as stack limit is full`)
         }
 
 
@@ -24,55 +33,51 @@ class stack_functions {
 
     pop() {
 
-        if (this.stackJS.length > 0) {
-            return this.stackJS[this.stackJS.length--]
-
+        if (this.index == -1) {
+            console.log("Cannot pop more as you have reached lower limit")
         } else {
-            console.log("Cannot pop more as you have reached 0th index")
+
+
+            this.stackJS.splice(this.index, 1);
+            this.index--
 
         }
 
     }
     peek() {
-        return this.stackJS[this.stackJS.length];
+        console.log(`The top element is: ${this.stackJS[this.index]}`);
 
     }
     stackSize() {
-        console.log("Current stack size is:" + this.stackJS.length);
+        console.log("Current stack size is:" + this.index);
     }
 
 }
 const stackelements = new stack_functions();
 
-stackelements.stackSize();
-stackelements.push(1);
-stackelements.push(2);
-stackelements.push(3);
-stackelements.push(4);
-stackelements.push(5);
-stackelements.push(6);
-stackelements.push(7);
-stackelements.push(8);
-stackelements.push(9);
-stackelements.push(10);
-console.log(stackelements.stackJS)
 stackelements.push(11);
-
-stackelements.pop();
-stackelements.pop();
-stackelements.pop();
-stackelements.pop();
-stackelements.pop();
-stackelements.pop();
-stackelements.pop();
-stackelements.pop();
-
-stackelements.pop();
-stackelements.pop();
-stackelements.pop();
+stackelements.push(22);
+stackelements.push(33);
+stackelements.push(44);
+stackelements.push(55);
+stackelements.push(66);
+stackelements.push(77);
+stackelements.push(88);
+stackelements.push(99);
+stackelements.push(100);
 
 
-// stackelements.stackSize();
+stackelements.push(110);
+console.log(stackelements.stackJS)
+stackelements.stackSize();
+
+stackelements.push(18);
+
+
+stackelements.pop();
+
 
 stackelements.stackSize();
-//console.log(stackelements.stackJS)
+
+console.log(stackelements.stackJS)
+stackelements.peek();
